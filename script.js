@@ -77,11 +77,11 @@ function scoring(playerScore, computerScore) {
 }
 
 function game() {
-    for (let i=0; i <= 4; i++) {
+   
 
 console.log(singleRound(playerPlay(), computerPlay()));
 
-    }
+    
     console.log("Your Score : " + playerTotal + " computer Score : " + computerTotal);
     console.log(winner);
 }
