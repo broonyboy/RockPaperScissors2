@@ -5,6 +5,7 @@ let computerTotal = 0;
 let computerScore = 0;
 let playerScore = 0;
 let winner = "";
+let move;
 
 function computerPlay() {
     randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -16,18 +17,19 @@ function computerPlay() {
         computerSelection = "scissors";
     }
     console.log("Computer Selection : " + computerSelection);
+    console.log("Player Selection : " + move);
+    document.getElementById("playerPick").innerHTML = move;
+    document.getElementById("computerPick").innerHTML = computerSelection;
     return computerSelection;
 }
 
-function playerPlay() {
-    let playerSelection = prompt('Please make your selection (rock, paper or scissors');
-    playerSelection = playerSelection.toLowerCase();
-    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-        console.log("Invalid Choice - Try again");
-        playerSelection = "";
-        playerPlay();
-    }
-    console.log("Player Selection :" + playerSelection);
+function playerPlay(move) {
+    let playerSelection = move;
+    
+    //window.onload = function() {
+    //    document.getElementById("playerPick").innerHTML = playerSelection;
+    // };
+     console.log("Player Selection :" + playerSelection);
     return playerSelection;
 }
 
@@ -78,15 +80,39 @@ function scoring(playerScore, computerScore) {
 
 function game() {
    
-
-console.log(singleRound(playerPlay(), computerPlay()));
-
+    
+let result = (singleRound(move, computerPlay()));
+console.log(result);
+document.getElementById('result').innerHTML = result;
+document.getElementById('playerscore').innerHTML = playerTotal;
+document.getElementById('computerScore').innerHTML = computerTotal;
     
     console.log("Your Score : " + playerTotal + " computer Score : " + computerTotal);
     console.log(winner);
 }
 
+// game();
+
+
+const rockbtn = document.querySelector('#rockbtn');
+
+rockbtn.addEventListener('click', () => {
+move = "rock";
 game();
-// console.log(singleRound(playerPlay(), computerPlay()));
-//console.log(playerTotal, computerTotal, winner);
+});
+
+const paperbtn = document.querySelector('#paperbtn');
+
+paperbtn.addEventListener('click', () => {
+move = "paper";
+game();
+});
+
+const scissorsbtn = document.querySelector('#scissorsbtn');
+
+scissorsbtn.addEventListener('click', () => {
+    move = "scissors";
+    game();
+});
+
 
