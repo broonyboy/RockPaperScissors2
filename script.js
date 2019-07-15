@@ -68,6 +68,7 @@ function singleRound(playerSelection, computerSelection) {
 function scoring(playerScore, computerScore) {
     playerTotal = playerTotal + playerScore;
     computerTotal = computerTotal + computerScore;
+    if (playerTotal == 5 || computerTotal == 5) {
     if (playerTotal > computerTotal) {
         winner = "You Win!!";
     } else if(playerTotal < computerTotal) {
@@ -75,6 +76,7 @@ function scoring(playerScore, computerScore) {
     } else {
         winner = "It's a draw.";
     }
+}
     return playerTotal, computerTotal, winner;
 }
 
@@ -82,13 +84,33 @@ function game() {
    
     
 let result = (singleRound(move, computerPlay()));
-console.log(result);
+
 document.getElementById('result').innerHTML = result;
 document.getElementById('playerscore').innerHTML = playerTotal;
 document.getElementById('computerScore').innerHTML = computerTotal;
+
+if (winner != "") {
+    //$('exampleModal').find('#changeThis').innerHTML = winner;
+    document.getElementById('changeThis').innerHTML = winner;
+    $('#exampleModal').modal('show');
     
+        
+
     console.log("Your Score : " + playerTotal + " computer Score : " + computerTotal);
     console.log(winner);
+}
+}
+
+function reset() {
+    computerSelection = "";
+    playerTotal = 0;
+    computerTotal = 0;
+    computerScore = 0;
+    playerScore = 0;
+    winner = "";
+    move="";
+    result = "";
+    game();
 }
 
 // game();
@@ -115,4 +137,7 @@ scissorsbtn.addEventListener('click', () => {
     game();
 });
 
-
+const resetbtn = document.querySelector('#resetbtn');
+resetbtn.addEventListener('click', () => {
+    reset();
+});

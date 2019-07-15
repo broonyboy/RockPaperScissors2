@@ -1,0 +1,32 @@
+.container {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #dce1e8;
+}
+
+#heading>h1 {
+    text-align: center;
+}
+
+#rockbtn, #paperbtn, #scissorsbtn {
+    height: 90px;
+    width: 90px;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
+}
+
+#game {
+    text-align: center;
+}
+
+#result {
+    text-align: center;
+}
+
+#score {
+    text-align: center;
+}
